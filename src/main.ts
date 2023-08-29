@@ -15,6 +15,7 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
   app.useGlobalInterceptors(new TransformInterceptor());
+  // 触发顺序 右 -> 左
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
   // 接口版本化管理
   app.enableVersioning({
